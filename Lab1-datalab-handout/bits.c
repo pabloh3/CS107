@@ -221,7 +221,7 @@ int bang(int x) {
  */
 int bitAnd(int x, int y) {
 
-  return ~(x|y);
+  return ~(~x|~y);
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -569,7 +569,9 @@ unsigned floatUnsigned2Float(unsigned u) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+unsigned int y = x<<(24-(n<<3));
+unsigned int  z = y>>(24);  
+return z; 
 }
 /* 
  * greatestBitPos - return a mask that marks the position of the
