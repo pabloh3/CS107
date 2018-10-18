@@ -210,7 +210,9 @@ int anyOddBit(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+int invx = ~x;                  //if x==0, then -1
+int negx = invx + 1;                //if x==0, then 0
+return ((~negx & invx)>>31) & 1;   
 }
 /* 
  * bitAnd - x&y using only ~ and | 
@@ -231,7 +233,41 @@ int bitAnd(int x, int y) {
  *   Rating: 4
  */
 int bitCount(int x) {
-  return 2;
+ int y = 1;
+int r1 = x&y;
+int r2 = (x>>1)&y;
+int r3 = (x>>2)&y;
+int r4 = (x>>3)&y;
+int r5 = (x>>4)&y;
+int r6 = (x>>5)&y;
+int r7 = (x>>6)&y;
+int r8 = (x>>7)&y;
+int r9 = (x>>8)&y;
+int r10 = (x>>9)&y;
+int r11 = (x>>10)&y;
+int r12 = (x>>11)&y;
+int r13 = (x>>12)&y;
+int r14 = (x>>13)&y;
+int r15 = (x>>14)&y;
+int r16 = (x>>15)&y;
+int r17 = (x>>16)&y;
+int r18 = (x>>17)&y;
+int r19 = (x>>18)&y;
+int r20 = (x>>19)&y;
+int r21 = (x>>20)&y;
+int r22 = (x>>21)&y;
+int r23 = (x>>22)&y;
+int r24 = (x>>23)&y;
+int r25 = (x>>24)&y;
+int r26 = (x>>25)&y;
+int r27 = (x>>26)&y;
+int r28 = (x>>27)&y;
+int r29 = (x>>28)&y;
+int r30 = (x>>29)&y;
+int r31 = (x>>30)&y;
+int r32 = (x>>31)&y;
+int r = r1+r2+r3+r4+r5+r6+r7+r8+r9+r10+r11+r12+r13+r14+r15+r16+r17+r18+r19+r20+r21+r22+r23+r24+r25+r26+r27+r28+r29+r30+r31+r32;
+ return r;
 }
 /* 
  * bitMask - Generate a mask consisting of all 1's 
@@ -394,7 +430,18 @@ int ezThreeFourths(int x) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+int m = -1;
+unsigned int x3 = x;
+unsigned int signo = x3>>31;
+int x_pos = ~x+1;
+int x2 = x+signo*2*(x_pos);
+int comparador = (m<<n)>>1;
+int comparacion = comparador^x2;
+int cregresado = (comparacion<<1)>>n;
+int  negado= cregresado+1;
+unsigned int negado_pos = negado;
+int res = (~negado_pos)>>31;
+  return res;
 }
 /* 
  * fitsShort - return 1 if x can be represented as a 
@@ -817,7 +864,8 @@ int logicalNeg(int x) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+unsigned int y = x;
+  return y>>n;
 }
 /* 
  * minusOne - return a value of -1 
@@ -1012,7 +1060,7 @@ int tmax(void) {
  *   Rating: 1
  */
 int tmin(void) {
-  return 2;
+  return 1<<31;
 }
 /*
  * trueFiveEighths - multiplies by 5/8 rounding toward 0,
